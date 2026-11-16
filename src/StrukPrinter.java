@@ -30,4 +30,11 @@ public class StrukPrinter {
         System.out.println("-----------------------------------------");
         System.out.println("Total belanja : " + Buku.formatRupiah(keranjang.hitungTotal()));
     }
+
+    public void cetakPembayaran(int totalBelanja, MetodeBayar[] pilihan) {
+        System.out.println(buatJudul("PEMBAYARAN", '-'));
+        for (MetodeBayar m : pilihan) {
+            System.out.printf("%-20s : %s%n", m.nama(), Buku.formatRupiah(m.totalBayar(totalBelanja)));
+        }
+    }
 }
