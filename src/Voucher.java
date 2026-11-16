@@ -10,8 +10,13 @@ public class Voucher implements MetodeBayar {
         return "Voucher " + Buku.formatRupiah(nilai);
     }
 
+    // Percobaan awal: return totalBelanja - nilai;
+    // Hasil baris voucher keranjang kedua saat dijalankan:
+    // Voucher Rp100.000    : -Rp36.000
+    // Itu melanggar kontrak MetodeBayar.totalBayar (hasil tidak pernah negatif),
+    // jadi diperbaiki: total bayar paling rendah nol.
     @Override
     public int totalBayar(int totalBelanja) {
-        return totalBelanja - nilai;
+        return Math.max(0, totalBelanja - nilai);
     }
 }
